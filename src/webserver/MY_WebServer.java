@@ -32,15 +32,17 @@ public class MY_WebServer {
                     OutputStream os = socket.getOutputStream();
                     Writer w = new OutputStreamWriter(os, "UTF-8");
                     BufferedWriter bw = new BufferedWriter(w);
-
+                    
+                    
+                    
 
                     String line = br.readLine();
                     if (line != null && !"".equals(line)) {
-                        String[] parts = line.split(" ");
+                        String[] parts = line.split(" ");                                            
                         if (parts.length >= 3) {
                             String fileName = parts[1];
                             System.out.println(" "+ fileName);
-
+                                                       
                             if (fileName.endsWith(".html")) {
                                 File f = new File("/Users/evuncik/Desktop/JAVA/MY_WebServer/src/" + fileName);
                                 if (f.exists()) {
@@ -74,7 +76,22 @@ public class MY_WebServer {
                                 bw.write("</body>");
                                 bw.write("</html>");
                                 work = false;
-                            } else {
+                            } else if (fileName.equals("/dir")) {
+                                bw.write("HTTP/1.1 200 OK");
+                                bw.newLine();
+                                bw.write("Content-Type: text/html");
+                                bw.newLine();
+                                bw.newLine();
+                                bw.write("<html>");
+                                bw.write("<body>");
+                                bw.write("<h1>/dir</h1>");
+                                bw.write("</body>");
+                                bw.write("</html>");
+                                
+                            }
+                            
+                            
+                            else {
                                 write404(bw);
                             }
                             bw.flush();
