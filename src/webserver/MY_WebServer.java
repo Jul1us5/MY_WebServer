@@ -85,6 +85,7 @@ public class MY_WebServer {
                                 bw.write("<html>");
                                 bw.write("<body>");
                                 bw.write("<h1>/dir</h1>");
+                                bw.write("<a href=\"http://localhost:9000/index.html\">index.html</a>");
                                 bw.write("</body>");
                                 bw.write("</html>");
                                 
@@ -92,7 +93,16 @@ public class MY_WebServer {
                             
                             
                             else {
-                                write404(bw);
+                                bw.write("HTTP/1.1 200 OK");
+                                bw.newLine();
+                                bw.write("Content-Type: text/html");
+                                bw.newLine();
+                                bw.newLine();
+                                bw.write("<html>");
+                                bw.write("<body>");
+                                bw.write("<h1>Server work!</h1>");
+                                bw.write("</body>");
+                                bw.write("</html>");
                             }
                             bw.flush();
                         }
