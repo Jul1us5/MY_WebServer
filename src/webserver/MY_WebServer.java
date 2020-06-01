@@ -14,10 +14,6 @@ import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- *
- * @author Julius
- */
 public class MY_WebServer {
 
     public static boolean work = true;
