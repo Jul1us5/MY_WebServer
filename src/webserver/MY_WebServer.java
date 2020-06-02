@@ -14,6 +14,7 @@ import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
 public class MY_WebServer {
 
     public static boolean work = true;
@@ -21,10 +22,11 @@ public class MY_WebServer {
             throws IOException {
         try (ServerSocket sc = new ServerSocket(9000);) {
             while (work) {
-                try (Socket socket = sc.accept();) {
+                Socket socket = sc.accept();
+                  
                     RequestHandler rh = new RequestHandler(socket);
                     rh.start();
-                }
+                
             }
         }
     } 
